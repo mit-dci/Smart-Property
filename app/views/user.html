@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<!--
+	Identity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Display!</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="http://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  		<script type="text/javascript" src="/js/lightwallet.min.js"></script>
+  		<script type="text/javascript" src="/js/wallet.js"></script>
+		<!--[if lte IE 8]><script src="/js/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/style/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/style/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="style/ie8.css" /><![endif]-->
+		<noscript><link rel="stylesheet" href="/style/noscript.css" /></noscript>
+	</head>
+	<body class="is-loading">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section class="main" id="start">
+						<!-- <header>
+							<span class="avatar"><img src="images/avatar.jpg" alt="" /></span>
+							<h1>Jane Doe</h1>
+							<p>Senior Psychonautics Engineer</p>
+						</header> -->
+
+						<h1>Hi!<h1>
+						<h2>You can rent this display and show all kinds of content on it.</h2>
+						<p id="priceInformation"></p>
+						<!-- <p> To do this you need to restore an Ethereum wallet using a seed or just create a new wallet and fund it with some ETH.</p> -->
+
+						<hr />
+						<ul class="actions">
+								<li><button onclick="newWallet()" class="button">Create new wallet</button></li>
+						</ul>
+						<ul class="actions">
+								<li><button onclick="restoreWallet()" class="button">Restore wallet</button></li>
+						</ul>
+
+					</section>
+
+					<section class="main" id="restore">
+						<!-- <header>
+							<span class="avatar"><img src="images/avatar.jpg" alt="" /></span>
+							<h1>Jane Doe</h1>
+							<p>Senior Psychonautics Engineer</p>
+						</header> -->
+
+						<h2>Restore your wallet <h2>
+						<div class="field">
+							<input type="text" id="seed" value="" placeholder="Seed" size="80"></input>
+						</div>
+						<div class="field">
+							<input type="password" id="password" value="" placeholder="Password" size="80"></input>
+						</div>
+						<hr />
+
+						<ul class="actions">
+								<li><button onclick="setSeed()" class="button">Restore wallet</button></li>
+						</ul>
+						<ul class="actions">
+								<li><button onclick="toStart()" class="button">Cancel</button></li>
+						</ul>
+
+					</section>
+
+					<section class="main" id="pay">
+						<div class="field">
+
+						  <div id="addr"></div>
+							<ul class="actions">
+								<li><button onclick="getBalances()" class="button">Refresh Balance</button></li>
+							</ul>
+						</div>
+
+						<hr/>
+						<p>For how long do you want to rent the display?</p>
+						<div id="period" class="field">
+							<input type="number" id="periodInput" value="5" placeholder="" min="1" size="80"></input> minutes
+							<div id="price"/>
+						</div>
+						<br>
+						<ul class="actions">
+								<li><button id="payButton" onclick="pay()" class="button">Rent Display</button></li>
+						</ul>
+						<ul class="actions">
+								<li><button onclick="toStart()" class="button">Cancel</button></li>
+						</ul>
+
+					</section>
+
+					<section class="main" id="msging">
+						<div class="field">
+							<input type="text" id="url" placeholder="Enter in URL"></input>
+						</div>
+						<br>
+						<ul class="actions">
+							<li><button onclick="signMessage()" class="button">Send</button></li>
+						</ul>
+					</section>
+					<section id="loading">
+					<div  class="loading">
+						<div class="block"></div>
+						<div class="block"></div>
+						<div class="block"></div>
+						<div class="block"></div>
+					</div>
+					<div class="center">
+						<p>It my take up to minute until your payment is confirmed.</p>
+						<p>Please be patient</p>
+					</div>
+					</section>
+
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="copyright">
+							<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<body>
+  <script src="http://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/lightwallet.min.js"></script>
+  <link rel="stylesheet" href="/style/wallet.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="/js/wallet.js"></script>
+  <h1>LightWallet</h1>
+  <h2>New Wallet</h2>
+  <div><input type="text" id="userEntropy" placeholder="Type random text to generate entropy" size="80"></input><button onclick="newWallet()">Create New Wallet</button></div>
+  <h2>Restore Wallet</h2>
+  <div><input type="text" id="seed" value="" size="80"></input><button onclick="setSeed()">Restore wallet from Seed</button></div>
+  <h2>Show Addresses</h2>
+  <div>Show <input type="text" id="numAddr" size="5" value="1"></input> more address(es) <button onclick="newAddresses('')">Show</button></div>
+  <div id="addr"></div>
+  <div><button onClick='getBalances()'>Refresh</button></div>
+  <h2>Send Ether</h2>
+  <div>From: <select id="sendFrom"></select></div>
+  <div>To: <input type="text" size="40" id="sendTo"></input></div>
+  <div>Ether: <input type="text" id="sendValueAmount"></div>
+  <div><button onclick="sendEth()">Send Ether</button></div>
+  <h2>Show Seed</h2>
+  <button onclick="showSeed()">Show Seed</button>
+  <h2>Function Call</h2>
+  <div>Caller: <select id="functionCaller"></select></div>
+  <div>Contract Address: <input type="text" size="40" id="contractAddr" value="0x1A8C40e1114f97DA587a187C8E02E5f64628215A"></input></div>
+  <div>Contract ABI: <input type="text" size="40" id="contractAbi"></input></div>
+  <div>Function Name: <input type="text" size="20" id="functionName" value="pay"></input></div>
+  <div>Function Arguments: <input type="text" size="40" id="functionArgs"></input></div>
+  <div>Value (Ether): <input type="text" id="sendValueAmountFunction"></input></div>
+  <div><button onclick="functionCall()">Call Function</button></div>
+  <h2>Sign Message</h2>
+  <div>Url: <input type="text" id="url" value="" size="80"></input></div>
+  <div><button onclick="signMessage()">Sign Message</button></div>
+</body>
+</html>
