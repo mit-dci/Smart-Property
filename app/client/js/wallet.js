@@ -343,10 +343,12 @@ function watchForPayment() {
             console.log(result.hasOwnProperty('args') && result.args.hasOwnProperty('payer'))
             if (result.hasOwnProperty('args') && result.args.hasOwnProperty('payer')) {
                 currentHolder = result.args.payer;
+                var time = result.args.paidUntil.c.pop();
                 console.log(currentHolder);
                 console.log(currentAddress);
                 if (checkIfCurrentHolder(currentHolder)) {
-                    window.msgConsole();
+                    msgConsole();
+                    timeCheck(time);
                 }
             }
         } else {
@@ -373,9 +375,11 @@ window.checkIfEnoughMoney = () => {
     }
 }
 
+
 var contractAddress = '0x9eb06FbCD5f1379142d5A3e51413Ba9b01d211C0';
 var MyContract = web3.eth.contract(abiArray);
 var myContractInstance = MyContract.at(contractAddress);
+
 
 
 
@@ -419,6 +423,8 @@ window.goToPayView = () => {
     $('#restore').hide();
     $('#pay').show();
     $('#loading').hide();
+    $('#msging').hide();
+    $('#footer').show();
 }
 
 window.toStart = () => {
@@ -426,34 +432,50 @@ window.toStart = () => {
     $('#pay').hide();
     $('#start').show();
     $('#msging').hide();
+    $('#footer').show();
 }
 
 window.restoreWallet = () => {
     $('#start').hide();
     $('#restore').show();
+    $('#footer').show();
 }
 window.msgLoading = () => {
     $('#pay').hide();
     $('#loading').show();
+    $('#footer').hide();
 
 }
 window.msgConsole = () => {
     //console.log("We are here!")
+    $('#pay').hide();
     $('#loading').hide();
     $('#msging').show();
+    $('#footer').show();
 }
-window.checkAddress = (address) => {
-    var userAddress = address;
-    userAddress = '0x' + userAddress
-    if (currentHolder = "") {
+window.timeOut = () => {
+  console.log("Timed Out!");
+  goToPayView();
+}
 
-    }
-    console.log(currentHolder)
-    if (userAddress == currentHolder) {
-        msgConsole();
-    }
-    //console.log('reached here!');
+function timeCheck(time){
+  console.log('inside timecheck');
+  var timeLeftInSeconds = time-Math.floor(Date.now()/1000);
+  console.log(timeLeftInSeconds);
+  if(timeLeftInSeconds>0){
+    console.log('inside timeCheck false');
+    var milliSeconds = timeLeftInSeconds * 1000;
+    console.log(milliSeconds)
+    setTimeout(timeOut, milliSeconds);
+  }else{
+    console.log(time-Math.floor(Date.now()/1000))
+    timeOut();
+  }
 }
+
+
+
+
 
 
 window.newAddresses = (password) => {
@@ -472,7 +494,22 @@ window.newAddresses = (password) => {
             $('#sendFrom').append('<option value="' + addresses[i] + '">' + addresses[i] + '</option>')
             $('#functionCaller').append('<option value="' + addresses[i] + '">' + addresses[i] + '</option>')
         }
+        var time = myContractInstance.paidUntil();
+
+        var currentHolder = myContractInstance.currentHolder();
+        console.log(addresses[0])
+        console.log(currentHolder)
+        currentAddress = "0x"+addresses[0];
         getBalances();
+        if (currentAddress == currentHolder){
+          if (time > Math.floor(Date.now()/1000)){
+            timeCheck(time)
+            msgConsole()
+          }
+        }
+
+
+
     })
 
 }

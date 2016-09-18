@@ -110,6 +110,7 @@ exports = module.exports = function (server) {
       console.log(data.msg);
       console.log('hello');
       console.log(lockedDisplay);
+      console.log(currentHolder==msgSender&&!lockedDisplay)
       if(currentHolder==msgSender&&!lockedDisplay){
         console.log('success');
         currentContent = data.msg;

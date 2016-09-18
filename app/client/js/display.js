@@ -53,7 +53,9 @@ $(document).ready(function(){
 socket.on('newContent', function(data) {
   console.log(data.msg);
   if (data.msg == "defaultDisplay"){
+    setContent("");
     showLanding();
+
 
   }else{
     console.log('New content received '+data.msg);
