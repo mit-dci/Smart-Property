@@ -11,7 +11,9 @@ After deploying the contract, change the contract address accordingly in wallet.
 Then run these commands inside the /app folder
 
 $npm install
+
 $npm install webpack
+
 $webpack
 
 Then you can run the embark/node server.
