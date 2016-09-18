@@ -17,7 +17,7 @@ node app.js
 
 Your app should be ready on localhost:8080
 
-Remember to also run a geth node and change the rpcaddr accordingly in this case I ran my node on a vm with the hostname "dci-node-1.media.mit.edu". Remember to change the rpcaddr and rpcport in your wallet.js and main.js also if you want to use your own node. 
+Remember to also run a geth node and change the rpcaddr accordingly in this case I ran my node on a vm with the hostname "dci-node-1.media.mit.edu". Also remember to change the rpcaddr and rpcport in your wallet.js and main.js if you want to use your own node.
 
 geth --testnet --rpcapi "eth,net,web3" --rpc --rpcport "8545" --rpcaddr "dci-node-1.media.mit.edu" --fast --rpccorsdomain "*"
 
