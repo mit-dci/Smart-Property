@@ -1,3 +1,6 @@
+Smart Property
+==============
+
 This is a demonstration for equitable "Smart Property".
 
 To run your own version first run the contract code separately. I recommend running it on mist because it uses a very
