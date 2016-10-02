@@ -1,3 +1,6 @@
+Smart Property
+==============
+
 This is a demonstration for equitable "Smart Property".
 
 To run your own version first run the contract code separately. I recommend running it on mist because it uses a very
@@ -8,7 +11,9 @@ After deploying the contract, change the contract address accordingly in wallet.
 Then run these commands inside the /app folder
 
 $npm install
+
 $npm install webpack
+
 $webpack
 
 Then you can run the embark/node server.
