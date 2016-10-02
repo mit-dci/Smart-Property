@@ -520,6 +520,7 @@
 	    var numAddr = 1;
 	    numAddr = parseInt($('#numAddr').val());
 	    lightwallet.keystore.deriveKeyFromPassword(password, function (err, pwDerivedKey) {
+	        console.log(global_keystore);
 	        global_keystore.generateNewAddress(pwDerivedKey, numAddr);
 	        var addresses = global_keystore.getAddresses();
 	        $('#sendFrom').html('');
@@ -555,8 +556,8 @@
 	                //console.log(addresses[i]+' '+balances[i]/1.0e18+' ETH, Nonce: '+nonces[i]);
 	                currentAddress = addresses[0];
 	                window.balance = balances[0] / 1.0e18;
-	                //$('#addr').append('<div id=\'addr\'>' + addresses[i]+ '</div>' + '<div id=\'addr\'>'+ ' (Bal: ' + (balances[i] / 1.0e18) + ' ETH, Nonce: ' + nonces[i] + ')'+'</div>' );
-	                $('#addr').append('<div id=\'addr\'> Your available balance is ' + balances[i] / 1.0e18 + ' ETH </div>');
+	                $('#addr').append('<div id=\'addr\'>' + addresses[i] + '</div>' + '<div id=\'addr\'> Your available balance is ' + balances[i] / 1.0e18 + ' ETH </div>');
+	                //$('#addr').append('<div id=\'addr\'> Your available balance is ' + (balances[i] / 1.0e18) + ' ETH </div>');
 	            }
 	        });
 	    });
@@ -656,7 +657,7 @@
 	};
 
 	window.signMessage = function () {
-	    var password = prompt('Enter Password', 'Password');
+	    var password = $('#password').val();
 	    if (name === null || name === false) {
 	        // Canceled
 	        msgConsole();
